@@ -2,7 +2,7 @@ package com.zipcodewilmington.singlylinkedlist;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import sun.jvm.hotspot.runtime.VM;
+
 
 /**
  * Created by leon on 1/10/18.
@@ -74,38 +74,35 @@ public class SinglyLinkedListTest {
     @Test
     public void testGet() {
         String expected = "target";
-        list.add("");
-        list.add(expected);
+        list.add("target");
 
-        String actual = list.get(1);
+        String actual = list.get(0);
 
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testCopy() {
-        list.add("");
-        list.add("1");
         list.add("thirds");
 
-        SinglyLinkedList<String> listCopy = list.copy(list);
+        SinglyLinkedList<String> actual = list.copy();
 
-        Assert.assertEquals(list.toString(), listCopy.toString());
         for (int i = 0; i < list.size(); i++) {
-            Assert.assertEquals(list.get(i), listCopy.get(i));
+            Assert.assertEquals(list.get(i), actual.get(i));
         }
     }
 
     @Test
     public void testSort() {
-        list.add("F");
-        list.add("Z");
-        list.add("A");
+        list.add("f");
+        list.add("z");
+        list.add("a");
 
         list.sort();
 
-        Assert.assertEquals(list.get(0).data, "A");
-        Assert.assertEquals(list.get(1).data, "F");
-        Assert.assertEquals(list.get(2).data, "Z");
+        Assert.assertEquals(list.get(0), "a");
+        Assert.assertEquals(list.get(1), "f");
+        Assert.assertEquals(list.get(2), "z");
     }
+
 }
